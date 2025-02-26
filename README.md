@@ -14,14 +14,15 @@ Gerenciador de Banco de Dados definido.
 práticas do mercado.
 
 Elementos Da Competência
-##Conhecimentos
+
+## Conhecimentos
 - IDE - Integrated Development Environment: conceitos e usabilidade.
 - Linguagem de programação: conceitos, definições, conexão com banco de dados
 e características.
 - Tratamento de exceção: conceitos, testes, tratativas e aplicabilidade.
 - Versionamento: conceitos, tipos e usabilidade.
 
-##Atitudes/Valores
+## Atitudes/Valores
 - Responsabilidade e comprometimento com os acordos estabelecidos.
 - Cordialidade no trato com as pessoas.
 - Proatividade no desenvolvimento das atividades profissionais.
