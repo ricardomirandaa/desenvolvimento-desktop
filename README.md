@@ -4,7 +4,7 @@ Unidade Curricular Desenvolvimento Desktop Usando: Git, Visual Studio 2022, C# e
 Carga horária mínima: 140h
 Carga horária máxima: 140h
 
-##Indicadores
+## Indicadores
 - Define o IDE conforme aplicação a ser desenvolvida.
 - Escreve linhas e codigo conforme requisitos do projeto.
 - Realiza a conexão da aplicação com o banco de dados de acordo o Sistema
