@@ -24,18 +24,18 @@ práticas do mercado.
 ### 📋 Elementos Da Competência
 
 ### 📘 Conhecimentos
-- IDE - Integrated Development Environment: conceitos e usabilidade.
-- Linguagem de programação: conceitos, definições, conexão com banco de dados
+1. IDE - Integrated Development Environment: conceitos e usabilidade.
+2. Linguagem de programação: conceitos, definições, conexão com banco de dados
 e características.
-- Tratamento de exceção: conceitos, testes, tratativas e aplicabilidade.
-- Versionamento: conceitos, tipos e usabilidade.
+3. Tratamento de exceção: conceitos, testes, tratativas e aplicabilidade.
+4. Versionamento: conceitos, tipos e usabilidade.
 
 ### 🥇 Atitudes/Valores
-- Responsabilidade e comprometimento com os acordos estabelecidos.
-- Cordialidade no trato com as pessoas.
-- Proatividade no desenvolvimento das atividades profissionais.
-- Colaboração no desenvolvimento do trabalho em equipe.
-- Iniciativa na proposição de soluções de problemas.
-- Zelo pela organização do ambiente de trabalho.
-- Respeito aos direitos de propriedade intelectual.
-- Sigilo no tratamento de dados e informações.
+1. Responsabilidade e comprometimento com os acordos estabelecidos.
+2. Cordialidade no trato com as pessoas.
+3. Proatividade no desenvolvimento das atividades profissionais.
+4. Colaboração no desenvolvimento do trabalho em equipe.
+5. Iniciativa na proposição de soluções de problemas.
+6. Zelo pela organização do ambiente de trabalho.
+7. Respeito aos direitos de propriedade intelectual.
+8. Sigilo no tratamento de dados e informações.
