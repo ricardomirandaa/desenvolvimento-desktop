@@ -1,4 +1,4 @@
-# UC5 Desenvlver aplicações desktop 💻
+# UC5 Desenvolver aplicações desktop 💻
 Unidade Curricular Desenvolvimento Desktop Usando: Git, Visual Studio 2022, C# e Windows Form .Net Framework 4.8.
 
 Carga horária mínima: 140h
