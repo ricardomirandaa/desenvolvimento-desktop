@@ -32,8 +32,9 @@
             this.chkCrianca = new System.Windows.Forms.CheckBox();
             this.lblSelecione = new System.Windows.Forms.Label();
             this.lblSexo = new System.Windows.Forms.Label();
-            this.chkHomem = new System.Windows.Forms.CheckBox();
-            this.chkMulher = new System.Windows.Forms.CheckBox();
+            this.chkMasculino = new System.Windows.Forms.CheckBox();
+            this.chkFeminino = new System.Windows.Forms.CheckBox();
+            this.lblIdade = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // chkAdulto
@@ -49,7 +50,7 @@
             this.chkAdulto.TabIndex = 0;
             this.chkAdulto.Text = "Adulto";
             this.chkAdulto.UseVisualStyleBackColor = true;
-            this.chkAdulto.CheckedChanged += new System.EventHandler(this.chkAdulto_CheckedChanged);
+            this.chkAdulto.Click += new System.EventHandler(this.chkAdulto_CheckedChanged);
             // 
             // chkCrianca
             // 
@@ -62,7 +63,7 @@
             this.chkCrianca.TabIndex = 1;
             this.chkCrianca.Text = "Criança";
             this.chkCrianca.UseVisualStyleBackColor = true;
-            this.chkCrianca.CheckedChanged += new System.EventHandler(this.chkCrianca_CheckedChanged);
+            this.chkCrianca.Click += new System.EventHandler(this.chkCrianca_CheckedChanged);
             // 
             // lblSelecione
             // 
@@ -84,39 +85,48 @@
             this.lblSexo.TabIndex = 3;
             this.lblSexo.Text = "Sexo";
             // 
-            // chkHomem
+            // chkMasculino
             // 
-            this.chkHomem.AutoSize = true;
-            this.chkHomem.Checked = true;
-            this.chkHomem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkHomem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkHomem.ForeColor = System.Drawing.Color.Goldenrod;
-            this.chkHomem.Location = new System.Drawing.Point(414, 55);
-            this.chkHomem.Name = "chkHomem";
-            this.chkHomem.Size = new System.Drawing.Size(81, 22);
-            this.chkHomem.TabIndex = 4;
-            this.chkHomem.Text = "Homem";
-            this.chkHomem.UseVisualStyleBackColor = true;
+            this.chkMasculino.Checked = true;
+            this.chkMasculino.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkMasculino.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkMasculino.ForeColor = System.Drawing.Color.Goldenrod;
+            this.chkMasculino.Location = new System.Drawing.Point(414, 55);
+            this.chkMasculino.Name = "chkMasculino";
+            this.chkMasculino.Size = new System.Drawing.Size(101, 22);
+            this.chkMasculino.TabIndex = 4;
+            this.chkMasculino.Text = "Masculino";
+            this.chkMasculino.UseVisualStyleBackColor = true;
             // 
-            // chkMulher
+            // chkFeminino
             // 
-            this.chkMulher.AutoSize = true;
-            this.chkMulher.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkMulher.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.chkMulher.Location = new System.Drawing.Point(514, 55);
-            this.chkMulher.Name = "chkMulher";
-            this.chkMulher.Size = new System.Drawing.Size(72, 22);
-            this.chkMulher.TabIndex = 5;
-            this.chkMulher.Text = "Mulher";
-            this.chkMulher.UseVisualStyleBackColor = true;
+            this.chkFeminino.AutoSize = true;
+            this.chkFeminino.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkFeminino.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.chkFeminino.Location = new System.Drawing.Point(521, 55);
+            this.chkFeminino.Name = "chkFeminino";
+            this.chkFeminino.Size = new System.Drawing.Size(88, 22);
+            this.chkFeminino.TabIndex = 5;
+            this.chkFeminino.Text = "Feminino";
+            this.chkFeminino.UseVisualStyleBackColor = true;
+            // 
+            // lblIdade
+            // 
+            this.lblIdade.AutoSize = true;
+            this.lblIdade.Location = new System.Drawing.Point(50, 97);
+            this.lblIdade.Name = "lblIdade";
+            this.lblIdade.Size = new System.Drawing.Size(92, 13);
+            this.lblIdade.TabIndex = 6;
+            this.lblIdade.Text = "Acima de 19 anos";
             // 
             // FrmCalculadoraIMC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.chkMulher);
-            this.Controls.Add(this.chkHomem);
+            this.Controls.Add(this.lblIdade);
+            this.Controls.Add(this.chkFeminino);
+            this.Controls.Add(this.chkMasculino);
             this.Controls.Add(this.lblSexo);
             this.Controls.Add(this.lblSelecione);
             this.Controls.Add(this.chkCrianca);
@@ -134,7 +144,8 @@
         private System.Windows.Forms.CheckBox chkCrianca;
         private System.Windows.Forms.Label lblSelecione;
         private System.Windows.Forms.Label lblSexo;
-        private System.Windows.Forms.CheckBox chkHomem;
-        private System.Windows.Forms.CheckBox chkMulher;
+        private System.Windows.Forms.CheckBox chkMasculino;
+        private System.Windows.Forms.CheckBox chkFeminino;
+        private System.Windows.Forms.Label lblIdade;
     }
 }
