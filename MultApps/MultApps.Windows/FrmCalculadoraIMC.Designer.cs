@@ -36,15 +36,17 @@
             this.chkFeminino = new System.Windows.Forms.CheckBox();
             this.lblIdade = new System.Windows.Forms.Label();
             this.panelAdulto = new System.Windows.Forms.Panel();
-            this.lblPeso = new System.Windows.Forms.Label();
-            this.lblAltura = new System.Windows.Forms.Label();
-            this.txtPeso = new System.Windows.Forms.TextBox();
-            this.txtAltura = new System.Windows.Forms.TextBox();
-            this.lblIdade2 = new System.Windows.Forms.Label();
             this.cmbIdade = new System.Windows.Forms.ComboBox();
+            this.lblIdade2 = new System.Windows.Forms.Label();
+            this.txtAltura = new System.Windows.Forms.TextBox();
+            this.txtPeso = new System.Windows.Forms.TextBox();
+            this.lblAltura = new System.Windows.Forms.Label();
+            this.lblPeso = new System.Windows.Forms.Label();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.lblResultado = new System.Windows.Forms.Label();
+            this.picBoxImc = new System.Windows.Forms.PictureBox();
             this.panelAdulto.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxImc)).BeginInit();
             this.SuspendLayout();
             // 
             // chkAdulto
@@ -144,47 +146,6 @@
             this.panelAdulto.Size = new System.Drawing.Size(310, 100);
             this.panelAdulto.TabIndex = 7;
             // 
-            // lblPeso
-            // 
-            this.lblPeso.AutoSize = true;
-            this.lblPeso.Location = new System.Drawing.Point(12, 10);
-            this.lblPeso.Name = "lblPeso";
-            this.lblPeso.Size = new System.Drawing.Size(31, 13);
-            this.lblPeso.TabIndex = 0;
-            this.lblPeso.Text = "Peso";
-            // 
-            // lblAltura
-            // 
-            this.lblAltura.AutoSize = true;
-            this.lblAltura.Location = new System.Drawing.Point(98, 10);
-            this.lblAltura.Name = "lblAltura";
-            this.lblAltura.Size = new System.Drawing.Size(34, 13);
-            this.lblAltura.TabIndex = 1;
-            this.lblAltura.Text = "Altura";
-            // 
-            // txtPeso
-            // 
-            this.txtPeso.Location = new System.Drawing.Point(15, 27);
-            this.txtPeso.Name = "txtPeso";
-            this.txtPeso.Size = new System.Drawing.Size(72, 20);
-            this.txtPeso.TabIndex = 2;
-            // 
-            // txtAltura
-            // 
-            this.txtAltura.Location = new System.Drawing.Point(101, 27);
-            this.txtAltura.Name = "txtAltura";
-            this.txtAltura.Size = new System.Drawing.Size(67, 20);
-            this.txtAltura.TabIndex = 3;
-            // 
-            // lblIdade2
-            // 
-            this.lblIdade2.AutoSize = true;
-            this.lblIdade2.Location = new System.Drawing.Point(177, 10);
-            this.lblIdade2.Name = "lblIdade2";
-            this.lblIdade2.Size = new System.Drawing.Size(34, 13);
-            this.lblIdade2.TabIndex = 4;
-            this.lblIdade2.Text = "Idade";
-            // 
             // cmbIdade
             // 
             this.cmbIdade.FormattingEnabled = true;
@@ -212,6 +173,47 @@
             this.cmbIdade.Size = new System.Drawing.Size(88, 21);
             this.cmbIdade.TabIndex = 8;
             // 
+            // lblIdade2
+            // 
+            this.lblIdade2.AutoSize = true;
+            this.lblIdade2.Location = new System.Drawing.Point(177, 10);
+            this.lblIdade2.Name = "lblIdade2";
+            this.lblIdade2.Size = new System.Drawing.Size(34, 13);
+            this.lblIdade2.TabIndex = 4;
+            this.lblIdade2.Text = "Idade";
+            // 
+            // txtAltura
+            // 
+            this.txtAltura.Location = new System.Drawing.Point(101, 27);
+            this.txtAltura.Name = "txtAltura";
+            this.txtAltura.Size = new System.Drawing.Size(67, 20);
+            this.txtAltura.TabIndex = 3;
+            // 
+            // txtPeso
+            // 
+            this.txtPeso.Location = new System.Drawing.Point(15, 27);
+            this.txtPeso.Name = "txtPeso";
+            this.txtPeso.Size = new System.Drawing.Size(72, 20);
+            this.txtPeso.TabIndex = 2;
+            // 
+            // lblAltura
+            // 
+            this.lblAltura.AutoSize = true;
+            this.lblAltura.Location = new System.Drawing.Point(98, 10);
+            this.lblAltura.Name = "lblAltura";
+            this.lblAltura.Size = new System.Drawing.Size(34, 13);
+            this.lblAltura.TabIndex = 1;
+            this.lblAltura.Text = "Altura";
+            // 
+            // lblPeso
+            // 
+            this.lblPeso.AutoSize = true;
+            this.lblPeso.Location = new System.Drawing.Point(12, 10);
+            this.lblPeso.Name = "lblPeso";
+            this.lblPeso.Size = new System.Drawing.Size(31, 13);
+            this.lblPeso.TabIndex = 0;
+            this.lblPeso.Text = "Peso";
+            // 
             // btnCalcular
             // 
             this.btnCalcular.Location = new System.Drawing.Point(53, 249);
@@ -231,11 +233,20 @@
             this.lblResultado.TabIndex = 9;
             this.lblResultado.Text = "Resultado";
             // 
+            // picBoxImc
+            // 
+            this.picBoxImc.Location = new System.Drawing.Point(550, 196);
+            this.picBoxImc.Name = "picBoxImc";
+            this.picBoxImc.Size = new System.Drawing.Size(156, 228);
+            this.picBoxImc.TabIndex = 10;
+            this.picBoxImc.TabStop = false;
+            // 
             // FrmCalculadoraIMC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(759, 450);
+            this.Controls.Add(this.picBoxImc);
             this.Controls.Add(this.lblResultado);
             this.Controls.Add(this.btnCalcular);
             this.Controls.Add(this.panelAdulto);
@@ -250,6 +261,7 @@
             this.Text = "FrmCalculadoraIMC";
             this.panelAdulto.ResumeLayout(false);
             this.panelAdulto.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxImc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,5 +285,6 @@
         private System.Windows.Forms.Label lblIdade2;
         private System.Windows.Forms.Button btnCalcular;
         private System.Windows.Forms.Label lblResultado;
+        private System.Windows.Forms.PictureBox picBoxImc;
     }
 }
