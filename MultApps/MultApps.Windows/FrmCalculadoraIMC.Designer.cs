@@ -227,7 +227,7 @@
             // lblResultado
             // 
             this.lblResultado.AutoSize = true;
-            this.lblResultado.Location = new System.Drawing.Point(50, 307);
+            this.lblResultado.Location = new System.Drawing.Point(412, 143);
             this.lblResultado.Name = "lblResultado";
             this.lblResultado.Size = new System.Drawing.Size(55, 13);
             this.lblResultado.TabIndex = 9;
@@ -235,9 +235,9 @@
             // 
             // picBoxImc
             // 
-            this.picBoxImc.Location = new System.Drawing.Point(550, 196);
+            this.picBoxImc.Location = new System.Drawing.Point(415, 170);
             this.picBoxImc.Name = "picBoxImc";
-            this.picBoxImc.Size = new System.Drawing.Size(156, 228);
+            this.picBoxImc.Size = new System.Drawing.Size(172, 219);
             this.picBoxImc.TabIndex = 10;
             this.picBoxImc.TabStop = false;
             // 
