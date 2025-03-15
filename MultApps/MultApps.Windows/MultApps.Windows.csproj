@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalculoAposentadoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CalculoAposentadoria.Designer.cs">
+      <DependentUpon>CalculoAposentadoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClassificacaoImc.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -74,6 +80,9 @@
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CalculoAposentadoria.resx">
+      <DependentUpon>CalculoAposentadoria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCalculadoraIMC.resx">
       <DependentUpon>FrmCalculadoraIMC.cs</DependentUpon>
     </EmbeddedResource>
