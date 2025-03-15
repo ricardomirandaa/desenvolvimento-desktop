@@ -22,11 +22,12 @@ namespace MultApps.Windows
             var nascimento = DateTime.Parse(txtNascimento.Text);
             var sexo = cmbSexo.Text;
             var contribucao = int.Parse(txtContribuicao.Text);
-            var idade = DateTime.Now.Year - nascimento.Year;
+            var idade = int.Parse(txtNascimento.Text);
+
 
             if (sexo == "Homem")
             {
-                if (idade >= 65 && contribucao >= 20)
+                if (idade > 65 && contribucao > 35)
                 {
                     MessageBox.Show("Você pode dar entrada no processo de aposentadoria");
                 }
@@ -37,7 +38,7 @@ namespace MultApps.Windows
             }
             else
             {
-                if (idade >= 62 && contribucao >= 30)
+                if (idade > 62 && contribucao > 30)
                 {
                     MessageBox.Show("Você pode dar entrada no processo de aposentadoria");
                 }

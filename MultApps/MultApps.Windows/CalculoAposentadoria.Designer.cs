@@ -35,6 +35,7 @@
             this.lblContribuicao = new System.Windows.Forms.Label();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.cmbSexo = new System.Windows.Forms.ComboBox();
+            this.lblResultado = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtNascimento
@@ -99,11 +100,21 @@
             this.cmbSexo.Size = new System.Drawing.Size(102, 21);
             this.cmbSexo.TabIndex = 8;
             // 
+            // lblResultado
+            // 
+            this.lblResultado.AutoSize = true;
+            this.lblResultado.Location = new System.Drawing.Point(315, 267);
+            this.lblResultado.Name = "lblResultado";
+            this.lblResultado.Size = new System.Drawing.Size(35, 13);
+            this.lblResultado.TabIndex = 9;
+            this.lblResultado.Text = "label1";
+            // 
             // CalculoAposentadoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblResultado);
             this.Controls.Add(this.cmbSexo);
             this.Controls.Add(this.btnCalcular);
             this.Controls.Add(this.lblContribuicao);
@@ -127,5 +138,6 @@
         private System.Windows.Forms.Label lblContribuicao;
         private System.Windows.Forms.Button btnCalcular;
         private System.Windows.Forms.ComboBox cmbSexo;
+        private System.Windows.Forms.Label lblResultado;
     }
 }
