@@ -20,11 +20,12 @@ namespace MultApps.Windows
         private void btnCarteirinha_Click(object sender, EventArgs e)
         {
             var nome = txtNome.Text;
-            var cpf = txtCPF.Text;
-            var dataNascimento = DateTime.Parse(txtNascimento2.Text);
-            var idade = int.Parse(txtNascimento2.Text);
-            var meio = cpf.Substring(3, 3);
-            var ultimosTres = cpf.Substring(6, 3);
+            DateTime nascimento = DateTime.Parse(txtNascimento2.Text);
+            string cpf = "12345678901";
+            string cpfOfuscado = OfuscarCPF(cpf);
+            DateTime dataAtual = DateTime.Now;
+
+            int idade = dataAtual.Year - nascimento.Year;
 
             if (idade <= 12)
             {
@@ -58,8 +59,17 @@ namespace MultApps.Windows
                 lblIdadeCliente.Text = $"{idade}";
                 picBox2.Load(FaseImagem.idoso);
             }
+        }
 
-            lblCPFCliente.Text = $"***.{meio}.{ultimosTres}-***";
+        private string OfuscarCPF(string cpf)
+        {
+            if (cpf.Length != 11)
+                return "CPF inválido";
+
+            string parte1 = cpf.Substring(3, 3);
+            string parte2 = cpf.Substring(6, 3);
+
+            return $"***.{parte1}.{parte2}.***";
         }
     }
 }
