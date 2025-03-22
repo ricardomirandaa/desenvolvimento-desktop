@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,42 +20,29 @@ namespace MultApps.Windows
 
         private void button1_Click(object sender, EventArgs e)
         {
+            #region acai
             listBoxPedidos.Items.Add(new PedidoItem("Açaí 300ml", 1, 15.00m));
-            picBox1.ImageLocation = ImagemPedido.Acai300ml;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             listBoxPedidos.Items.Add(new PedidoItem("Açaí 500ml", 1, 20.00m));
-            picBox1.ImageLocation = ImagemPedido.Acai500ml;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             listBoxPedidos.Items.Add(new PedidoItem("Açaí 700ml", 1, 25.00m));
-            picBox1.ImageLocation = ImagemPedido.Acai700ml;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             listBoxPedidos.Items.Add(new PedidoItem("Açaí 1L", 1, 35.00m));
-            picBox1.ImageLocation = ImagemPedido.AcaiFamilia;
-        }
-
-        private void btnRemover_Click(object sender, EventArgs e)
-        {
-            if (listBoxPedidos.SelectedItem != null)
-            {
-                listBoxPedidos.Items.Remove(listBoxPedidos.SelectedItem);
-            }
-            else
-            {
-                MessageBox.Show("Selecione um item para remover.");
-            }
+            #endregion
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
+            #region complementos
             NumericUpDown numericUpDownQuantidade = new NumericUpDown();
             nudGranola.Minimum = 1;
             nudGranola.Maximum = 50;
@@ -135,10 +123,12 @@ namespace MultApps.Windows
             this.Controls.Add(listBoxPedidos);
             int quantidade = (int)numericUpDownQuantidade.Value;
             listBoxPedidos.Items.Add(new PedidoItem("Maçã", 1, 1.50m));
+            #endregion
         }
 
         private void nudChocolate_ValueChanged(object sender, EventArgs e)
         {
+            #region frutas
             NumericUpDown numericUpDownQuantidade = new NumericUpDown();
             nudLeiteCondensado.Minimum = 1;
             nudLeiteCondensado.Maximum = 50;
@@ -219,6 +209,7 @@ namespace MultApps.Windows
             this.Controls.Add(listBoxPedidos);
             int quantidade = (int)numericUpDownQuantidade.Value;
             listBoxPedidos.Items.Add(new PedidoItem("Menta", 1, 1.50m));
+            #endregion
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)
@@ -228,6 +219,17 @@ namespace MultApps.Windows
             {
                 total += item.Preco;
                 lblTotal2.Text = total.ToString("C");
+            }
+        }
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            if (listBoxPedidos.SelectedItem != null)
+            {
+                listBoxPedidos.Items.Remove(listBoxPedidos.SelectedItem);
+            }
+            else
+            {
+                MessageBox.Show("Selecione um item para remover.");
             }
         }
     }

@@ -72,7 +72,6 @@
     <Compile Include="FrmCalculadoraIMC.Designer.cs">
       <DependentUpon>FrmCalculadoraIMC.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImagemPedido.cs" />
     <Compile Include="ImcImagem.cs" />
     <Compile Include="LojaAcai.cs">
       <SubType>Form</SubType>
