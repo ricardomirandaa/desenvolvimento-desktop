@@ -42,7 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Entities\Abstract\EntidadeBase.cs" />
+    <Compile Include="Entities\Categoria.cs" />
+    <Compile Include="Entities\Cliente.cs" />
+    <Compile Include="Entities\Produto.cs" />
+    <Compile Include="Enums\StatusEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Scripts\banco_de_dados.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
