@@ -27,5 +27,14 @@ namespace MultApps.Models.Repositories
                 return resultado > 0;
             }
         }
+        public List<Categoria> ListarTodasCategorias()
+        {
+            using (IDbConnection db = new MySqlConnection(ConnectionString))
+            {
+                var comandoSql = @"SELECT id, nome, data_criacao AS DataCadastro, data_alteracao AS DataAlteracao, Status FROM categoria";
+                var resultado = db.Query<Categoria>(comandoSql).ToList();
+                return resultado;
+            }
+        }
     }
 }

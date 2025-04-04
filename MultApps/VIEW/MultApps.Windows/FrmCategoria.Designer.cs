@@ -40,14 +40,16 @@
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.grpCategoriaProduto = new System.Windows.Forms.GroupBox();
             this.btnSalvar = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.grpCategoriaProduto.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblId
             // 
             this.lblId.AutoSize = true;
             this.lblId.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblId.Location = new System.Drawing.Point(3, 28);
+            this.lblId.Location = new System.Drawing.Point(3, 29);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(19, 17);
             this.lblId.TabIndex = 1;
@@ -87,7 +89,7 @@
             // 
             this.txtId.Enabled = false;
             this.txtId.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(6, 44);
+            this.txtId.Location = new System.Drawing.Point(6, 43);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(82, 23);
             this.txtId.TabIndex = 5;
@@ -175,17 +177,28 @@
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 252);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(800, 198);
+            this.dataGridView1.TabIndex = 14;
+            // 
             // FrmCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.grpCategoriaProduto);
             this.Name = "FrmCategoria";
             this.Text = "FrmCategoria";
             this.grpCategoriaProduto.ResumeLayout(false);
             this.grpCategoriaProduto.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -203,5 +216,6 @@
         private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.GroupBox grpCategoriaProduto;
         private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
