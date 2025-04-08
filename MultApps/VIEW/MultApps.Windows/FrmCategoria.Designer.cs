@@ -41,6 +41,7 @@
             this.grpCategoriaProduto = new System.Windows.Forms.GroupBox();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnLimpar = new System.Windows.Forms.Button();
             this.grpCategoriaProduto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +50,7 @@
             // 
             this.lblId.AutoSize = true;
             this.lblId.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblId.Location = new System.Drawing.Point(3, 29);
+            this.lblId.Location = new System.Drawing.Point(3, 48);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(19, 17);
             this.lblId.TabIndex = 1;
@@ -59,7 +60,7 @@
             // 
             this.lblNome.AutoSize = true;
             this.lblNome.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNome.Location = new System.Drawing.Point(124, 27);
+            this.lblNome.Location = new System.Drawing.Point(124, 46);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(44, 17);
             this.lblNome.TabIndex = 2;
@@ -69,7 +70,7 @@
             // 
             this.lblDataCriacao.AutoSize = true;
             this.lblDataCriacao.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataCriacao.Location = new System.Drawing.Point(280, 28);
+            this.lblDataCriacao.Location = new System.Drawing.Point(280, 47);
             this.lblDataCriacao.Name = "lblDataCriacao";
             this.lblDataCriacao.Size = new System.Drawing.Size(103, 17);
             this.lblDataCriacao.TabIndex = 3;
@@ -79,7 +80,7 @@
             // 
             this.lblDataAlteracao.AutoSize = true;
             this.lblDataAlteracao.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataAlteracao.Location = new System.Drawing.Point(429, 27);
+            this.lblDataAlteracao.Location = new System.Drawing.Point(429, 46);
             this.lblDataAlteracao.Name = "lblDataAlteracao";
             this.lblDataAlteracao.Size = new System.Drawing.Size(151, 17);
             this.lblDataAlteracao.TabIndex = 4;
@@ -89,7 +90,7 @@
             // 
             this.txtId.Enabled = false;
             this.txtId.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(6, 43);
+            this.txtId.Location = new System.Drawing.Point(6, 62);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(82, 23);
             this.txtId.TabIndex = 5;
@@ -98,7 +99,7 @@
             // 
             this.txtDataAlteracao.Enabled = false;
             this.txtDataAlteracao.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDataAlteracao.Location = new System.Drawing.Point(432, 43);
+            this.txtDataAlteracao.Location = new System.Drawing.Point(432, 62);
             this.txtDataAlteracao.Name = "txtDataAlteracao";
             this.txtDataAlteracao.Size = new System.Drawing.Size(148, 23);
             this.txtDataAlteracao.TabIndex = 8;
@@ -107,7 +108,7 @@
             // 
             this.txtDataCriacao.Enabled = false;
             this.txtDataCriacao.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDataCriacao.Location = new System.Drawing.Point(283, 43);
+            this.txtDataCriacao.Location = new System.Drawing.Point(283, 62);
             this.txtDataCriacao.Name = "txtDataCriacao";
             this.txtDataCriacao.Size = new System.Drawing.Size(100, 23);
             this.txtDataCriacao.TabIndex = 9;
@@ -115,7 +116,7 @@
             // txtNome
             // 
             this.txtNome.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(127, 43);
+            this.txtNome.Location = new System.Drawing.Point(127, 62);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(94, 23);
             this.txtNome.TabIndex = 10;
@@ -124,7 +125,7 @@
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(634, 27);
+            this.lblStatus.Location = new System.Drawing.Point(634, 46);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(43, 17);
             this.lblStatus.TabIndex = 11;
@@ -138,7 +139,7 @@
             "Inativo",
             "Ativo",
             "Excluído"});
-            this.cmbStatus.Location = new System.Drawing.Point(637, 42);
+            this.cmbStatus.Location = new System.Drawing.Point(637, 61);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(88, 25);
             this.cmbStatus.TabIndex = 12;
@@ -158,7 +159,7 @@
             this.grpCategoriaProduto.Controls.Add(this.lblDataAlteracao);
             this.grpCategoriaProduto.Controls.Add(this.txtDataAlteracao);
             this.grpCategoriaProduto.Font = new System.Drawing.Font("Microsoft New Tai Lue", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpCategoriaProduto.Location = new System.Drawing.Point(12, 52);
+            this.grpCategoriaProduto.Location = new System.Drawing.Point(12, 12);
             this.grpCategoriaProduto.Name = "grpCategoriaProduto";
             this.grpCategoriaProduto.Size = new System.Drawing.Size(776, 143);
             this.grpCategoriaProduto.TabIndex = 13;
@@ -181,10 +182,22 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 252);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 278);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(800, 198);
+            this.dataGridView1.Size = new System.Drawing.Size(800, 172);
             this.dataGridView1.TabIndex = 14;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpar.Location = new System.Drawing.Point(649, 161);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(88, 23);
+            this.btnLimpar.TabIndex = 15;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // FrmCategoria
             // 
@@ -194,6 +207,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.grpCategoriaProduto);
+            this.Controls.Add(this.btnLimpar);
             this.Name = "FrmCategoria";
             this.Text = "FrmCategoria";
             this.grpCategoriaProduto.ResumeLayout(false);
@@ -217,5 +231,6 @@
         private System.Windows.Forms.GroupBox grpCategoriaProduto;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnLimpar;
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Dapper;
+using Microsoft.SqlServer.Server;
 using MultApps.Models.Entities.Abstract;
 using MySql.Data.MySqlClient;
+using Mysqlx.Prepare;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -34,6 +36,29 @@ namespace MultApps.Models.Repositories
                 var comandoSql = @"SELECT id, nome, data_criacao AS DataCadastro, data_alteracao AS DataAlteracao, Status FROM categoria";
                 var resultado = db.Query<Categoria>(comandoSql).ToList();
                 return resultado;
+            }
+        }
+        public Categoria ObterCategoriaPorId(int id)
+        {
+            using (IDbConnection db = new MySqlConnection(ConnectionString))
+            {
+                var comandoSql = @"SELECT id, nome, data_criacao AS DataCadastro, data_alteracao AS DataAlteracao, Status FROM categoria WHERE id = @Id";
+                var parametro = new DynamicParameters();
+                parametro.Add("@Id", id);
+                var resultado = db.Query<Categoria>(comandoSql, parametro).FirstOrDefault();
+                return resultado;
+            }
+        }
+        public Categoria AtualizarCategoria()
+        {
+            using (IDbConnection db = new MySqlConnection(ConnectionString))
+            {
+                var comandoSql = @"UPDATE categoria SET Nome = @Nome, Status = @Status WHERE id = @Id";
+                var categoriaAtualizada = new Categoria();
+                var parametro = new DynamicParameters();
+                parametro.Add("@Id", categoriaAtualizada.Id);
+                var resultado = db.Query<Categoria>Execute(comandoSql, parametro);
+                return;
             }
         }
     }
