@@ -23,21 +23,39 @@ namespace MultApps.Windows
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            var categoriaRepository = new CategoriaRepository();
             var categoria = new Categoria();
+            var categoriaRepository = new CategoriaRepository();            
             categoria.Nome = txtNome.Text;
             categoria.Status = (StatusEnum)cmbStatus.SelectedIndex;
             var categoriarepository = new CategoriaRepository();
-            var resultado = categoriarepository.CadastrarCategoria(categoria);
-            if(resultado)
+            
+            if(string.IsNullOrEmpty(txtNome.Text))
             {
-                MessageBox.Show("Categoria cadastrada com sucesso");
+                var resultado = categoriarepository.CadastrarCategoria(categoria);
+                if (resultado)
+                {
+                    MessageBox.Show("Categoria cadastrada com sucesso");
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao cadastrar categoria");
+                }
+                CarregarTodasCategorias();
             }
             else
             {
-                MessageBox.Show("Erro ao cadastrar categoria");
+                categoria.Id = int.Parse(txtId.Text);
+                var resultado = categoriarepository.AtualizarCategoria(categoria);
+                if (resultado)
+                {
+                    MessageBox.Show("Categoria cadastrada com sucesso");
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao cadastrar categoria");
+                }
+                CarregarTodasCategorias();
             }
-            CarregarTodasCategorias();
 
         }
 
@@ -129,6 +147,9 @@ namespace MultApps.Windows
             txtDataAlteracao.Text = categoria.DataAlteracao.ToString("dd/MM/yyyy");
             txtDataCriacao.Text = categoria.DataCadastro.ToString("dd/MM/yyyy");
             txtDataAlteracao.Text = categoria.DataAlteracao.ToString("dd/MM/yyyy");
+
+            btnDeletar.Enabled = true;
+            btnSalvar.Text = "Salvar Alterações";
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -138,6 +159,26 @@ namespace MultApps.Windows
             txtDataAlteracao.Text = string.Empty;
             txtDataCriacao.Text = string.Empty;
             cmbStatus.SelectedIndex = -1;
+        }
+
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+            var categoriaId = int.Parse(txtId.Text);
+            var categoriaRepository = new CategoriaRepository();
+            var sucesso = categoriaRepository.DeletarCategoria(categoriaId);
+
+            if (sucesso)
+            {
+                MessageBox.Show($"Categoria removida com sucesso");
+                CarregarTodasCategorias();
+            }
+            else
+            {
+                MessageBox.Show($"Erro ao deletar categoria: {txtNome.Text}");
+            }
+
+            btnDeletar.Enabled = false;
+            btnLimpar_Click(sender, e);
         }
     }
 }

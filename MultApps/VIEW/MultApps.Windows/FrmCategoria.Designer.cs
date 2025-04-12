@@ -42,6 +42,7 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnLimpar = new System.Windows.Forms.Button();
+            this.btnDeletar = new System.Windows.Forms.Button();
             this.grpCategoriaProduto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -147,6 +148,7 @@
             // grpCategoriaProduto
             // 
             this.grpCategoriaProduto.BackColor = System.Drawing.Color.White;
+            this.grpCategoriaProduto.Controls.Add(this.btnDeletar);
             this.grpCategoriaProduto.Controls.Add(this.btnSalvar);
             this.grpCategoriaProduto.Controls.Add(this.txtId);
             this.grpCategoriaProduto.Controls.Add(this.cmbStatus);
@@ -159,7 +161,7 @@
             this.grpCategoriaProduto.Controls.Add(this.lblDataAlteracao);
             this.grpCategoriaProduto.Controls.Add(this.txtDataAlteracao);
             this.grpCategoriaProduto.Font = new System.Drawing.Font("Microsoft New Tai Lue", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpCategoriaProduto.Location = new System.Drawing.Point(12, 12);
+            this.grpCategoriaProduto.Location = new System.Drawing.Point(12, 40);
             this.grpCategoriaProduto.Name = "grpCategoriaProduto";
             this.grpCategoriaProduto.Size = new System.Drawing.Size(776, 143);
             this.grpCategoriaProduto.TabIndex = 13;
@@ -168,7 +170,7 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.BackColor = System.Drawing.Color.Honeydew;
+            this.btnSalvar.BackColor = System.Drawing.Color.Chartreuse;
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.Location = new System.Drawing.Point(637, 102);
             this.btnSalvar.Name = "btnSalvar";
@@ -182,22 +184,37 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 278);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 258);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(800, 172);
+            this.dataGridView1.Size = new System.Drawing.Size(800, 192);
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // btnLimpar
             // 
+            this.btnLimpar.BackColor = System.Drawing.Color.LightCoral;
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.Location = new System.Drawing.Point(649, 161);
+            this.btnLimpar.Location = new System.Drawing.Point(649, 12);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(88, 23);
             this.btnLimpar.TabIndex = 15;
             this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.UseVisualStyleBackColor = false;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
+            // btnDeletar
+            // 
+            this.btnDeletar.BackColor = System.Drawing.Color.Red;
+            this.btnDeletar.Enabled = false;
+            this.btnDeletar.Font = new System.Drawing.Font("Microsoft New Tai Lue", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeletar.ForeColor = System.Drawing.Color.White;
+            this.btnDeletar.Location = new System.Drawing.Point(504, 101);
+            this.btnDeletar.Name = "btnDeletar";
+            this.btnDeletar.Size = new System.Drawing.Size(75, 23);
+            this.btnDeletar.TabIndex = 14;
+            this.btnDeletar.Text = "Deletar";
+            this.btnDeletar.UseVisualStyleBackColor = false;
+            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
             // 
             // FrmCategoria
             // 
@@ -232,5 +249,6 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnLimpar;
+        private System.Windows.Forms.Button btnDeletar;
     }
 }

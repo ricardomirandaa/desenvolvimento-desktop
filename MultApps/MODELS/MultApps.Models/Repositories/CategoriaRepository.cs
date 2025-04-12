@@ -1,14 +1,10 @@
 ﻿using Dapper;
-using Microsoft.SqlServer.Server;
 using MultApps.Models.Entities.Abstract;
 using MySql.Data.MySqlClient;
-using Mysqlx.Prepare;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MultApps.Models.Repositories
 {
@@ -38,6 +34,30 @@ namespace MultApps.Models.Repositories
                 return resultado;
             }
         }
+        public bool AtualizarCategoria(Categoria categoria)
+        {
+            using (IDbConnection db = new MySqlConnection(ConnectionString))
+            {
+                var comandoSql = @"UPDATE categoria SET Nome = @Nome, Status = @Status WHERE id = @Id";
+                var parametros = new DynamicParameters();
+                parametros.Add("@Id", categoria.Id);
+                parametros.Add("@Nome", categoria.Nome);
+                parametros.Add("@Status", categoria.Status);
+                var resposta = db.Execute(comandoSql, parametros);
+                return resposta > 0;
+            }
+        }
+        public bool DeletarCategoria(int id)
+        {
+            using (IDbConnection db = new MySqlConnection(ConnectionString))
+            {
+                var comandoSql = @"DELETE FROM categoria WHERE id = @Id";
+                var parametros = new DynamicParameters();
+                parametros.Add("@Id", id);
+                var resultado = db.Execute(comandoSql, parametros);
+                return resultado > 0;
+            }
+        }
         public Categoria ObterCategoriaPorId(int id)
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
@@ -49,17 +69,6 @@ namespace MultApps.Models.Repositories
                 return resultado;
             }
         }
-        public Categoria AtualizarCategoria()
-        {
-            using (IDbConnection db = new MySqlConnection(ConnectionString))
-            {
-                var comandoSql = @"UPDATE categoria SET Nome = @Nome, Status = @Status WHERE id = @Id";
-                var categoriaAtualizada = new Categoria();
-                var parametro = new DynamicParameters();
-                parametro.Add("@Id", categoriaAtualizada.Id);
-                var resultado = db.Query<Categoria>Execute(comandoSql, parametro);
-                return;
-            }
-        }
+
     }
 }
