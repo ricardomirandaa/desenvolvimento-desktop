@@ -38,7 +38,7 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.txtDataCadastro = new System.Windows.Forms.TextBox();
-            this.txtADataAcesso = new System.Windows.Forms.TextBox();
+            this.txtDataAcesso = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.lblCpf = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -81,6 +81,7 @@
             this.btnExcluir.TabIndex = 2;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // cmbStatus
             // 
@@ -141,13 +142,13 @@
             this.txtDataCadastro.Size = new System.Drawing.Size(100, 20);
             this.txtDataCadastro.TabIndex = 9;
             // 
-            // txtADataAcesso
+            // txtDataAcesso
             // 
-            this.txtADataAcesso.Enabled = false;
-            this.txtADataAcesso.Location = new System.Drawing.Point(314, 119);
-            this.txtADataAcesso.Name = "txtADataAcesso";
-            this.txtADataAcesso.Size = new System.Drawing.Size(109, 20);
-            this.txtADataAcesso.TabIndex = 10;
+            this.txtDataAcesso.Enabled = false;
+            this.txtDataAcesso.Location = new System.Drawing.Point(314, 119);
+            this.txtDataAcesso.Name = "txtDataAcesso";
+            this.txtDataAcesso.Size = new System.Drawing.Size(109, 20);
+            this.txtDataAcesso.TabIndex = 10;
             // 
             // lblNome
             // 
@@ -228,6 +229,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(720, 150);
             this.dataGridView1.TabIndex = 19;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // lblId
             // 
@@ -250,7 +252,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.SeaShell;
             this.ClientSize = new System.Drawing.Size(744, 450);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.lblId);
@@ -263,7 +265,7 @@
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblCpf);
             this.Controls.Add(this.lblNome);
-            this.Controls.Add(this.txtADataAcesso);
+            this.Controls.Add(this.txtDataAcesso);
             this.Controls.Add(this.txtDataCadastro);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.txtEmail);
@@ -294,7 +296,7 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.TextBox txtDataCadastro;
-        private System.Windows.Forms.TextBox txtADataAcesso;
+        private System.Windows.Forms.TextBox txtDataAcesso;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Label lblCpf;
         private System.Windows.Forms.Label lblEmail;
