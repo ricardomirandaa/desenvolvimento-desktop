@@ -20,77 +20,94 @@ namespace MultApps.Windows
         {
             InitializeComponent();
             CarregarTodosUsuarios();
+            var status = new[] { "ativo", "inativo" };
+            var filtros = new[] { "todos", "ativo", "inativo"};
+            cmbStatus.Items.AddRange(status);
+            cmbStatus.Items.AddRange(filtros);
+
+            cmbStatus.SelectedIndex = 0;
         }
 
-        private void btnCadastrar_Click(object sender, EventArgs e)
+        private void btnSalvar_Click(object sender, EventArgs e)
         {
-            var usuario = new Usuarios();
-            var usuarioRepository = new UsuariosRepository();
-            usuario.Nome = txtNome.Text;
-            usuario.Email = txtEmail.Text;
-            usuario.Senha = txtSenha.Text;
-            usuario.Cpf = txtCpf.Text;
-            usuario.Status = (StatusEnum)cmbStatus.SelectedIndex;
-            var resultado = usuarioRepository.CadastrarUsuario(usuario);
-            if (resultado)
+            try
             {
-                MessageBox.Show("Usuário cadastrado com sucesso");
+                if (TemCamposEmBranco())
+                {
+                    return;
+                }
+
+                var usuario = new Usuarios();
+                usuario.Nome = txtNome.Text;
+                usuario.Cpf = mtxCpf.Text;
+                usuario.Email = txtEmail.Text;
+                usuario.Senha = txtSenha.Text;
+                usuario.Status = (StatusEnum)cmbStatus.SelectedIndex;
+
+                var usuariosRepository = new UsuariosRepository();
+
+                var emailJaExistente = usuariosRepository.EmailExistente(usuario.Email);
+                if (emailJaExistente)
+                {
+                    MessageBox.Show($"Email já cadastrado");
+                    txtEmail.Focus();
+                    return;
+                }
+
+                var sucesso = usuariosRepository.CadastrarUsuario(usuario);
+
+                if (sucesso)
+                {
+                    MessageBox.Show($"Usuário {usuario.Nome} cadastrado com sucesso");
+                    CarregarTodosUsuarios();
+                }
+                else
+                {
+                    MessageBox.Show($"Erro ao cadastrar usuário: {usuario.Nome}");
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("Erro ao cadastrar usuário");
+
+                throw;
             }
         }
-        private void btnAlterar_Click(object sender, EventArgs e)
+        private bool TemCamposEmBranco()
         {
-            var usuarios = new Usuarios();
-            var usuariosRepository = new UsuariosRepository();
-            usuarios.Nome = txtNome.Text;
-            usuarios.Status = (StatusEnum)cmbStatus.SelectedIndex;
-
-
             if (string.IsNullOrEmpty(txtNome.Text))
             {
-                var resultado = usuariosRepository.CadastrarUsuario(usuarios);
-                if (resultado)
-                {
-                    MessageBox.Show("Categoria cadastrada com sucesso");
-                }
-                else
-                {
-                    MessageBox.Show("Erro ao cadastrar categoria");
-                }
+                MessageBox.Show($"Campo Nome é obrigatório");
+                txtNome.Focus();
+                return true;
             }
-            else
-            {
-                usuarios.Id = int.Parse(txtId.Text);
-                var resultado = usuariosRepository.AtualizarUsuario(usuarios);
-                if (resultado)
-                {
-                    MessageBox.Show("Usuário cadastrado com sucesso");
-                }
-                else
-                {
-                    MessageBox.Show("Erro ao cadastrar usuário");
-                }
-            }
-            CarregarTodosUsuarios();
-        }
-        private void btnExcluir_Click(object sender, EventArgs e)
-        {
-            var usuarioId = int.Parse(txtId.Text);
-            var usuariosRepository = new UsuariosRepository();
-            var sucesso = usuariosRepository.DeletarUsuario(usuarioId);
 
-            if (sucesso)
+            if (string.IsNullOrEmpty(mtxCpf.Text))
             {
-                MessageBox.Show($"Usuário removido com sucesso");
-                CarregarTodosUsuarios();
+                MessageBox.Show($"Campo Cpf é obrigatório");
+                mtxCpf.Focus();
+                return true;
             }
-            else
+
+            if (string.IsNullOrEmpty(txtEmail.Text))
             {
-                MessageBox.Show($"Erro ao deletar usuário: {txtNome.Text}");
+                MessageBox.Show($"Campo Email é obrigatório");
+                txtEmail.Focus();
+                return true;
             }
+
+            if (string.IsNullOrEmpty(txtSenha.Text))
+            {
+                MessageBox.Show($"Campo Senha é obrigatório");
+                txtSenha.Focus();
+                return true;
+            }
+            if (cmbStatus.SelectedIndex == -1)
+            {
+                MessageBox.Show($"Campo Status é obrigatório");
+                cmbStatus.Focus();
+                return true;
+            }
+            return false;
         }
         private void CarregarTodosUsuarios()
         {
@@ -125,7 +142,6 @@ namespace MultApps.Windows
             {
                 DataPropertyName = "Senha",
                 HeaderText = "Senha",
-                DefaultCellStyle = new DataGridViewCellStyle { Format = "*****" }
             });
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
@@ -166,12 +182,10 @@ namespace MultApps.Windows
                 MessageBox.Show($"Usuário #{usuarios} não encontrado");
                 return;
             }
-
-            txtId.Text = usuarios.Id.ToString();
             txtNome.Text = usuarios.Nome;
             txtEmail.Text = usuarios.Email;
             txtSenha.Text = usuarios.Senha;
-            txtCpf.Text = usuarios.Cpf;
+            mtxCpf.Text = usuarios.Cpf;
             cmbStatus.SelectedIndex = (int)usuarios.Status;
             txtDataAcesso.Text = usuarios.DataAlteracao.ToString("dd/MM/yyyy");
             txtDataCadastro.Text = usuarios.DataCadastro.ToString("dd/MM/yyyy");

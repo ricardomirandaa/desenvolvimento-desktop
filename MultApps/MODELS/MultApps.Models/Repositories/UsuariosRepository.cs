@@ -1,15 +1,9 @@
 ﻿using Dapper;
 using MultApps.Models.Entities;
-using MultApps.Models.Entities.Abstract;
-using MultApps.Models.Enums;
 using MySql.Data.MySqlClient;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MultApps.Models.Repositories
 {
@@ -21,12 +15,13 @@ namespace MultApps.Models.Repositories
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
             {
-                var comandoSql = @"INSERT INTO usuario (Nome, Email, Senha, Cpf) VALUES (@Nome, @Email, @Senha, @Cpf)";
+                var comandoSql = @"INSERT INTO usuario (Nome, Cpf, Email, Senha, Status) VALUES (@Nome, @Cpf, @Email, @Senha, @Status)";
                 var parametro = new DynamicParameters();
                 parametro.Add("@Nome", usuario.Nome);
+                parametro.Add("@Cpf", usuario.Cpf);
                 parametro.Add("@Email", usuario.Email);
                 parametro.Add("@Senha", usuario.Senha);
-                parametro.Add("@Cpf", usuario.Cpf);
+                parametro.Add("@Status", usuario.Status);
                 var resultado = db.Execute(comandoSql, parametro);
                 return resultado > 0;
             }
@@ -75,6 +70,17 @@ namespace MultApps.Models.Repositories
                 parametro.Add("@Id", id);
                 var resultado = db.Query<Usuarios>(comandoSql, parametro).FirstOrDefault();
                 return resultado;
+            }
+        }
+        public bool EmailExistente(string email)
+        {
+            using (IDbConnection db = new MySqlConnection(ConnectionString))
+            {
+                var comandoSql = @"SELECT COUNT(*) FROM usuario WHERE Email = @Email";
+                var parametro = new DynamicParameters();
+                parametro.Add("@Email", email);
+                var resultado = db.ExecuteScalar<int>(comandoSql, parametro);
+                return resultado > 0;
             }
         }
     }

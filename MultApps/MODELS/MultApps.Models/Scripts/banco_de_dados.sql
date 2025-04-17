@@ -21,3 +21,15 @@ CREATE TABLE IF NOT EXISTS produto (
     status ENUM ('inativo','ativo','excluido') NOT NULL,
     FOREIGN KEY (categoria_id) REFERENCES categoria(id)
 );
+
+CREATE TABLE IF NOT EXISTS usuario (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+	cpf VARCHAR(20) NOT NULL,
+    email VARCHAR(100),
+    data_cadastro TIMESTAMP NOT NULL,
+    data_alteracao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    data_ultimo_acesso Datetime,
+    senha CHAR(10),
+    status ENUM ('inativo','ativo') NOT NULL
+);
