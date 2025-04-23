@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using MultApps.Models.Entities;
 using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -52,13 +53,38 @@ namespace MultApps.Models.Repositories
                 return resultado > 0;
             }
         }
-        public List<Usuarios> ListarTodosUsuarios()
+        public DataTable ListarTodosUsuarios()
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
             {
-                var comandoSql = @"SELECT id, Nome, Email, Senha, Cpf FROM usuario";
-                var resultado = db.Query<Usuarios>(comandoSql).ToList();
-                return resultado;
+                var comandoSql = @"SELECT id as Id,
+                                    nome as Nome,
+                                    cpf as Cpf,
+                                    email as Email,
+                                    data_cadastro as DataCadastro,
+                                    data_alteracao as DataAlteracao,
+                                    data_ultimo_acesso as DataUltimoAcesso
+                                 FROM usuario";
+                var usuarios = db.Query<Usuarios>(comandoSql).ToList();
+                var dataTable = new DataTable();
+                dataTable.Columns.Add("Id", typeof(int));
+                dataTable.Columns.Add("Nome", typeof(string));
+                dataTable.Columns.Add("Cpf", typeof(string));
+                dataTable.Columns.Add("Email", typeof(string));
+                dataTable.Columns.Add("Data Cadastro", typeof(DateTime));
+                dataTable.Columns.Add("Data Alteracao", typeof(DateTime));
+                dataTable.Columns.Add("Data Ultimo Acesso", typeof(DateTime));
+                foreach (var usuario in usuarios)
+                {
+                    dataTable.Rows.Add(usuario.Id,
+                                       usuario.Nome,
+                                       usuario.Cpf,
+                                       usuario.Email,
+                                       usuario.DataCadastro,
+                                       usuario.DataAlteracao,
+                                       usuario.DataUltimoAcesso);
+                }
+                return dataTable;
             }
         }
         public Usuarios ObterUsuarioPorId(int id)

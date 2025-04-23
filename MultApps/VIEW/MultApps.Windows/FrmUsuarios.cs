@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +21,12 @@ namespace MultApps.Windows
         {
             InitializeComponent();
             CarregarTodosUsuarios();
-            var status = new[] { "ativo", "inativo" };
+            var status = new[] { "inativo", "ativo" };
             var filtros = new[] { "todos", "ativo", "inativo"};
             cmbStatus.Items.AddRange(status);
-            cmbStatus.Items.AddRange(filtros);
+            cmbFiltrar.Items.AddRange(filtros);
 
-            cmbStatus.SelectedIndex = 0;
+            cmbStatus.SelectedIndex = 1;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -60,6 +61,7 @@ namespace MultApps.Windows
                 {
                     MessageBox.Show($"Usuário {usuario.Nome} cadastrado com sucesso");
                     CarregarTodosUsuarios();
+                    LimparCampos();
                 }
                 else
                 {
@@ -113,53 +115,6 @@ namespace MultApps.Windows
         {
             var usuarioRepository = new UsuariosRepository();
             var listaDeUsuarios = usuarioRepository.ListarTodosUsuarios();
-
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.Columns.Clear();
-
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "Id",
-                HeaderText = "Id",
-            });
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "Nome",
-                HeaderText = "Nome do Usuário",
-            });
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "Cpf",
-                HeaderText = "CPF",
-                DefaultCellStyle = new DataGridViewCellStyle { Format = "000.000.000-00" }
-            });
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "Email",
-                HeaderText = "Email",
-            });
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "Senha",
-                HeaderText = "Senha",
-            });
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "DataCadastro",
-                HeaderText = "Data de Cadastro",
-                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" }
-            });
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "DataAcesso",
-                HeaderText = "Data do último acesso",
-                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" }
-            });
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "Status",
-                HeaderText = "Status",
-            });
             dataGridView1.DataSource = listaDeUsuarios;
         }
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -190,6 +145,19 @@ namespace MultApps.Windows
             txtDataAcesso.Text = usuarios.DataAlteracao.ToString("dd/MM/yyyy");
             txtDataCadastro.Text = usuarios.DataCadastro.ToString("dd/MM/yyyy");
         }
-
+        private void FrmUsuarios_Load(object sender, EventArgs e)
+        {
+            CarregarTodosUsuarios();
+        }
+        private void LimparCampos()
+        {
+            mtxCpf.Clear();
+            txtEmail.Clear();
+            txtNome.Clear();
+            txtSenha.Clear();
+            txtDataCadastro.Clear();
+            txtDataAcesso.Clear();
+            cmbStatus.SelectedIndex = -1;
+        }
     }
 }

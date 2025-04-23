@@ -75,9 +75,6 @@
             // cmbStatus
             // 
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Items.AddRange(new object[] {
-            "Ativo",
-            "Inativo"});
             this.cmbStatus.Location = new System.Drawing.Point(465, 118);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(121, 21);
@@ -86,10 +83,6 @@
             // cmbFiltrar
             // 
             this.cmbFiltrar.FormattingEnabled = true;
-            this.cmbFiltrar.Items.AddRange(new object[] {
-            "Todos",
-            "Ativo",
-            "Inativo"});
             this.cmbFiltrar.Location = new System.Drawing.Point(27, 261);
             this.cmbFiltrar.Name = "cmbFiltrar";
             this.cmbFiltrar.Size = new System.Drawing.Size(121, 21);
@@ -100,14 +93,14 @@
             this.txtNome.Location = new System.Drawing.Point(27, 52);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(100, 20);
-            this.txtNome.TabIndex = 5;
+            this.txtNome.TabIndex = 2;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(314, 52);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 20);
-            this.txtEmail.TabIndex = 7;
+            this.txtEmail.TabIndex = 2;
             // 
             // txtSenha
             // 
@@ -220,7 +213,7 @@
             this.mtxCpf.Mask = "999,999,999-99";
             this.mtxCpf.Name = "mtxCpf";
             this.mtxCpf.Size = new System.Drawing.Size(100, 20);
-            this.mtxCpf.TabIndex = 20;
+            this.mtxCpf.TabIndex = 2;
             // 
             // FrmUsuarios
             // 
@@ -249,6 +242,7 @@
             this.Controls.Add(this.btnSalvar);
             this.Name = "FrmUsuarios";
             this.Text = "FrmUsuarios";
+            this.Load += new System.EventHandler(this.FrmUsuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
