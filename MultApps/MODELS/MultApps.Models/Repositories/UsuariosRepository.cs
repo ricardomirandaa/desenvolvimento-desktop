@@ -53,7 +53,7 @@ namespace MultApps.Models.Repositories
                 return resultado > 0;
             }
         }
-        public DataTable ListarTodosUsuarios()
+        public DataTable ListarTodosUsuarios(string status)
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
             {
@@ -83,6 +83,45 @@ namespace MultApps.Models.Repositories
                                        usuario.DataCadastro,
                                        usuario.DataAlteracao,
                                        usuario.DataUltimoAcesso);
+                }
+                return dataTable;
+            }
+        }
+        public DataTable ListarUsuariosPorStatus(string status)
+        {
+            using (IDbConnection db = new MySqlConnection(ConnectionString))
+            {
+                var comandoSql = @"SELECT id as Id,
+                                    nome as Nome,
+                                    cpf as Cpf,
+                                    email as Email,
+                                    data_cadastro as DataCadastro,
+                                    data_alteracao as DataAlteracao,
+                                    data_ultimo_acesso as DataUltimoAcesso
+                                 FROM usuario
+                                 WHERE status = @Status";
+                var parametro = new DynamicParameters();
+                parametro.Add("@Status", status);
+                var usuarios = db.Query<Usuarios>(comandoSql).ToList();
+                var dataTable = new DataTable();
+                dataTable.Columns.Add("Id", typeof(int));
+                dataTable.Columns.Add("Nome", typeof(string));
+                dataTable.Columns.Add("Cpf", typeof(string));
+                dataTable.Columns.Add("Email", typeof(string));
+                dataTable.Columns.Add("Data Cadastro", typeof(DateTime));
+                dataTable.Columns.Add("Data Alteracao", typeof(DateTime));
+                dataTable.Columns.Add("Data Ultimo Acesso", typeof(DateTime));
+                dataTable.Columns.Add("Status", typeof(string));
+                foreach (var usuario in usuarios)
+                {
+                    dataTable.Rows.Add(usuario.Id,
+                                       usuario.Nome,
+                                       usuario.Cpf,
+                                       usuario.Email,
+                                       usuario.DataCadastro,
+                                       usuario.DataAlteracao,
+                                       usuario.DataUltimoAcesso,
+                                       usuario.Status);
                 }
                 return dataTable;
             }

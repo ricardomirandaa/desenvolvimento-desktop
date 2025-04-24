@@ -2,6 +2,7 @@
 using MultApps.Models.Entities.Abstract;
 using MultApps.Models.Enum;
 using MultApps.Models.Repositories;
+using MultApps.Models.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,12 +22,13 @@ namespace MultApps.Windows
         {
             InitializeComponent();
             CarregarTodosUsuarios();
-            var status = new[] { "inativo", "ativo" };
-            var filtros = new[] { "todos", "ativo", "inativo"};
+            var status = new[] { 0, 1 };
+            var filtros = new[] { 2, 1, 0};
             cmbStatus.Items.AddRange(status);
             cmbFiltrar.Items.AddRange(filtros);
 
             cmbStatus.SelectedIndex = 1;
+            cmbFiltrar.SelectedIndex = 0;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -42,7 +44,7 @@ namespace MultApps.Windows
                 usuario.Nome = txtNome.Text;
                 usuario.Cpf = mtxCpf.Text;
                 usuario.Email = txtEmail.Text;
-                usuario.Senha = txtSenha.Text;
+                usuario.Senha = CriptografiaService.Criptografar(txtSenha.Text);
                 usuario.Status = (StatusEnum)cmbStatus.SelectedIndex;
 
                 var usuariosRepository = new UsuariosRepository();
@@ -74,6 +76,7 @@ namespace MultApps.Windows
                 throw;
             }
         }
+        
         private bool TemCamposEmBranco()
         {
             if (string.IsNullOrEmpty(txtNome.Text))
@@ -111,12 +114,14 @@ namespace MultApps.Windows
             }
             return false;
         }
+        
         private void CarregarTodosUsuarios()
         {
             var usuarioRepository = new UsuariosRepository();
-            var listaDeUsuarios = usuarioRepository.ListarTodosUsuarios();
+            var listaDeUsuarios = usuarioRepository.ListarTodosUsuarios("todos");
             dataGridView1.DataSource = listaDeUsuarios;
         }
+        
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0)
@@ -145,10 +150,12 @@ namespace MultApps.Windows
             txtDataAcesso.Text = usuarios.DataAlteracao.ToString("dd/MM/yyyy");
             txtDataCadastro.Text = usuarios.DataCadastro.ToString("dd/MM/yyyy");
         }
+        
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
             CarregarTodosUsuarios();
         }
+        
         private void LimparCampos()
         {
             mtxCpf.Clear();
@@ -158,6 +165,25 @@ namespace MultApps.Windows
             txtDataCadastro.Clear();
             txtDataAcesso.Clear();
             cmbStatus.SelectedIndex = -1;
+        }
+
+        private void cmbFiltrar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var usuariosRepository = new UsuariosRepository();
+            switch(cmbFiltrar.SelectedIndex)
+            {
+                case 0:
+                    CarregarTodosUsuarios();
+                    break;
+                case 1:
+                    var usuariosAtivos = usuariosRepository.ListarTodosUsuarios(1);
+                    dataGridView1.DataSource = usuariosAtivos;
+                    break;
+                case 2:
+                    var usuariosInativos = usuariosRepository.ListarTodosUsuarios(2);
+                    dataGridView1.DataSource = usuariosInativos;
+                    break;
+            }
         }
     }
 }

@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MultApps.Models.Services
 {
-    public class CriptografiaService
+    public static class CriptografiaService
     {
-        public string Criptografar(string senha)
+        public static string Criptografar(string senha)
         {
-            var senhaCrpto = BCrypt.Net.BCrypt.HashPassword(senha);
-            return senhaCrpto;
+            var senhaCripto = BCrypt.Net.BCrypt.HashPassword(senha);
+            return senhaCripto;
         }
-        public string Verifiar(string senha, string senhaCriptografada)
+        public static bool Verifiar(string senha, string senhaCriptografada)
         {
             BCrypt.Net.BCrypt.Verify(senha, senhaCriptografada);
-
+            return BCrypt.Net.BCrypt.Verify(senha, senhaCriptografada);
         }
     }
 }
