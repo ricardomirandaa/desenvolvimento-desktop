@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MultApps.Models.Entities
 {
-    public class Usuarios : EntidadeBase
+    public class Usuario : EntidadeBase
     {
         public string Nome { get; set; }
         public string Cpf { get; set; }

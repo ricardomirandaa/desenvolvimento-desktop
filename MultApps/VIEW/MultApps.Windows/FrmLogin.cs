@@ -2,13 +2,6 @@
 using MultApps.Models.Repositories;
 using MultApps.Models.Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MultApps.Windows
@@ -56,7 +49,8 @@ namespace MultApps.Windows
 
             if(senhaConfere)
             {
-                MessageBox.Show("Usuário e senha correto");
+                var formPrincipal = new Principal(usuario);
+                formPrincipal.Show();
             }
             else
             {

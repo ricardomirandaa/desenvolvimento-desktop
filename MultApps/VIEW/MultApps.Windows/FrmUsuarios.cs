@@ -1,17 +1,8 @@
 ﻿using MultApps.Models.Entities;
-using MultApps.Models.Entities.Abstract;
 using MultApps.Models.Enum;
 using MultApps.Models.Repositories;
 using MultApps.Models.Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MultApps.Windows
@@ -40,7 +31,7 @@ namespace MultApps.Windows
                     return;
                 }
 
-                var usuario = new Usuarios();
+                var usuario = new Usuario();
                 usuario.Nome = txtNome.Text;
                 usuario.Cpf = mtxCpf.Text;
                 usuario.Email = txtEmail.Text;

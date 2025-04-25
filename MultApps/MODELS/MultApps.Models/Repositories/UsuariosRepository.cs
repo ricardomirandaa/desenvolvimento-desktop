@@ -1,9 +1,7 @@
 ﻿using Dapper;
 using MultApps.Models.Entities;
-using MultApps.Models.Entities.Abstract;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
@@ -13,7 +11,7 @@ namespace MultApps.Models.Repositories
     {
         public string ConnectionString = "Server=localhost;Database=multapps_dev;Uid=root;Pwd=root";
 
-        public bool CadastrarUsuario(Usuarios usuario)
+        public bool CadastrarUsuario(Usuario usuario)
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
             {
@@ -41,7 +39,7 @@ namespace MultApps.Models.Repositories
                                     data_alteracao as DataAlteracao,
                                     data_ultimo_acesso as DataUltimoAcesso
                                  FROM usuario";
-                var usuarios = db.Query<Usuarios>(comandoSql).ToList();
+                var usuarios = db.Query<Usuario>(comandoSql).ToList();
                 var dataTable = new DataTable();
                 dataTable.Columns.Add("Id", typeof(int));
                 dataTable.Columns.Add("Nome", typeof(string));
@@ -79,7 +77,7 @@ namespace MultApps.Models.Repositories
                                  WHERE status = @Status";
                 var parametro = new DynamicParameters();
                 parametro.Add("@Status", status);
-                var usuarios = db.Query<Usuarios>(comandoSql).ToList();
+                var usuarios = db.Query<Usuario>(comandoSql).ToList();
                 var dataTable = new DataTable();
                 dataTable.Columns.Add("Id", typeof(int));
                 dataTable.Columns.Add("Nome", typeof(string));
@@ -104,7 +102,7 @@ namespace MultApps.Models.Repositories
             }
         }
         
-        public Usuarios ObterUsuarioPorId(int id)
+        public Usuario ObterUsuarioPorId(int id)
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
             {
@@ -119,7 +117,7 @@ namespace MultApps.Models.Repositories
                                           FROM usuario WHERE id = @Id";
                 var parametro = new DynamicParameters();
                 parametro.Add("@Id", id);
-                var resultado = db.Query<Usuarios>(comandoSql, parametro).FirstOrDefault();
+                var resultado = db.Query<Usuario>(comandoSql, parametro).FirstOrDefault();
                 return resultado;
             }
         }
@@ -136,7 +134,7 @@ namespace MultApps.Models.Repositories
             }
         }
 
-        public Usuarios ObterUsuarioPorEmail(string email)
+        public Usuario ObterUsuarioPorEmail(string email)
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
             {
@@ -148,7 +146,7 @@ namespace MultApps.Models.Repositories
                                           FROM usuario WHERE email = @Email";
                 var parametro = new DynamicParameters();
                 parametro.Add("@Email", email);
-                var resultado = db.Query<Usuarios>(comandoSql, parametro).FirstOrDefault();
+                var resultado = db.Query<Usuario>(comandoSql, parametro).FirstOrDefault();
                 return resultado;
             }
         }
