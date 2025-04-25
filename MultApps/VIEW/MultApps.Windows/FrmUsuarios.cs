@@ -22,8 +22,8 @@ namespace MultApps.Windows
         {
             InitializeComponent();
             CarregarTodosUsuarios();
-            var status = new[] { 0, 1 };
-            var filtros = new[] { 2, 1, 0};
+            var status = new[] { "inativo", "ativo" };
+            var filtros = new[] { "todos", "ativo", "inativo"};
             cmbStatus.Items.AddRange(status);
             cmbFiltrar.Items.AddRange(filtros);
 
@@ -176,11 +176,11 @@ namespace MultApps.Windows
                     CarregarTodosUsuarios();
                     break;
                 case 1:
-                    var usuariosAtivos = usuariosRepository.ListarTodosUsuarios(1);
+                    var usuariosAtivos = usuariosRepository.ListarTodosUsuarios("ativos");
                     dataGridView1.DataSource = usuariosAtivos;
                     break;
                 case 2:
-                    var usuariosInativos = usuariosRepository.ListarTodosUsuarios(2);
+                    var usuariosInativos = usuariosRepository.ListarTodosUsuarios("inativos");
                     dataGridView1.DataSource = usuariosInativos;
                     break;
             }

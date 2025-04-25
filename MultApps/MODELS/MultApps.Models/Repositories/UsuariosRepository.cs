@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using MultApps.Models.Entities;
+using MultApps.Models.Entities.Abstract;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -27,32 +28,7 @@ namespace MultApps.Models.Repositories
                 return resultado > 0;
             }
         }
-        public bool AtualizarUsuario(Usuarios usuarios)
-        {
-            using (IDbConnection db = new MySqlConnection(ConnectionString))
-            {
-                var comandoSql = @"UPDATE usuario SET Nome = @Nome, Email = @Email, Senha = @Senha, Cpf = @Cpf WHERE id = @Id";
-                var parametros = new DynamicParameters();
-                parametros.Add("@Id", usuarios.Id);
-                parametros.Add("@Nome", usuarios.Nome);
-                parametros.Add("@Email", usuarios.Email);
-                parametros.Add("@Senha", usuarios.Senha);
-                parametros.Add("@Cpf", usuarios.Cpf);
-                var resposta = db.Execute(comandoSql, parametros);
-                return resposta > 0;
-            }
-        }
-        public bool DeletarUsuario(int id)
-        {
-            using (IDbConnection db = new MySqlConnection(ConnectionString))
-            {
-                var comandoSql = @"DELETE FROM usuario WHERE id = @Id";
-                var parametros = new DynamicParameters();
-                parametros.Add("@Id", id);
-                var resultado = db.Execute(comandoSql, parametros);
-                return resultado > 0;
-            }
-        }
+        
         public DataTable ListarTodosUsuarios(string status)
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
@@ -87,6 +63,7 @@ namespace MultApps.Models.Repositories
                 return dataTable;
             }
         }
+        
         public DataTable ListarUsuariosPorStatus(string status)
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
@@ -126,17 +103,27 @@ namespace MultApps.Models.Repositories
                 return dataTable;
             }
         }
+        
         public Usuarios ObterUsuarioPorId(int id)
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
             {
-                var comandoSql = @"SELECT id, Nome, Email, Senha, Cpf FROM usuario WHERE id = @Id";
+                var comandoSql = @"SELECT id as Id, 
+                                          nome as Nome,
+                                          cpf as Cpf,
+                                          email as Email, 
+                                          senha as Senha,
+                                          data_criacao as DataCadastro,
+                                          data_ultimo_acesso as DataUltimoAcesso,
+                                          status as Status
+                                          FROM usuario WHERE id = @Id";
                 var parametro = new DynamicParameters();
                 parametro.Add("@Id", id);
                 var resultado = db.Query<Usuarios>(comandoSql, parametro).FirstOrDefault();
                 return resultado;
             }
         }
+        
         public bool EmailExistente(string email)
         {
             using (IDbConnection db = new MySqlConnection(ConnectionString))
@@ -146,6 +133,37 @@ namespace MultApps.Models.Repositories
                 parametro.Add("@Email", email);
                 var resultado = db.ExecuteScalar<int>(comandoSql, parametro);
                 return resultado > 0;
+            }
+        }
+
+        public Usuarios ObterUsuarioPorEmail(string email)
+        {
+            using (IDbConnection db = new MySqlConnection(ConnectionString))
+            {
+                var comandoSql = @"SELECT id as Id, 
+                                          nome as Nome,
+                                          email as Email, 
+                                          senha as Senha,
+                                          status as Status
+                                          FROM usuario WHERE email = @Email";
+                var parametro = new DynamicParameters();
+                parametro.Add("@Email", email);
+                var resultado = db.Query<Usuarios>(comandoSql, parametro).FirstOrDefault();
+                return resultado;
+            }
+        }
+
+        public bool AtualizarSenha(string novaSenha, string email)
+        {
+            using (IDbConnection db = new MySqlConnection(ConnectionString))
+            {
+                var comandoSql = @"UPDATE usuario SET senha = @Senha WHERE email = @Email";
+                var parametros = new DynamicParameters();
+                parametros.Add("@Senha", novaSenha);
+                parametros.Add("@Email", email);
+
+                var resposta = db.Execute(comandoSql, parametros);
+                return resposta > 0;
             }
         }
     }

@@ -14,7 +14,7 @@ namespace MultApps.Models.Services
             var senhaCripto = BCrypt.Net.BCrypt.HashPassword(senha);
             return senhaCripto;
         }
-        public static bool Verifiar(string senha, string senhaCriptografada)
+        public static bool Verificar(string senha, string senhaCriptografada)
         {
             BCrypt.Net.BCrypt.Verify(senha, senhaCriptografada);
             return BCrypt.Net.BCrypt.Verify(senha, senhaCriptografada);
