@@ -16,5 +16,11 @@ namespace MultApps.Windows
         {
             InitializeComponent();
         }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            var produto = new Produto();
+            
+        }
     }
 }
