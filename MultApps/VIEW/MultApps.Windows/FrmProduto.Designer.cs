@@ -31,13 +31,16 @@
             this.lblGestaoProdutos = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtUrlImagem = new System.Windows.Forms.TextBox();
+            this.lblUrlImagem = new System.Windows.Forms.Label();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.btnLimpar = new System.Windows.Forms.Button();
             this.rdoStatusInativo = new System.Windows.Forms.RadioButton();
             this.rdoStatusAtivo = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtEstoque = new System.Windows.Forms.TextBox();
+            this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.txtPreco = new System.Windows.Forms.TextBox();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
@@ -46,14 +49,11 @@
             this.lblPreco = new System.Windows.Forms.Label();
             this.lblDescricao = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
-            this.btnLimpar = new System.Windows.Forms.Button();
             this.lblCadastroGestao = new System.Windows.Forms.Label();
-            this.cmbFiltro = new System.Windows.Forms.ComboBox();
+            this.cmbFiltroStatus = new System.Windows.Forms.ComboBox();
             this.lblFiltroStatus = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbFiltroCategoria = new System.Windows.Forms.ComboBox();
             this.lblFiltroCategoria = new System.Windows.Forms.Label();
-            this.lblUrlImagem = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -78,7 +78,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txtUrlImagem);
             this.panel1.Controls.Add(this.lblUrlImagem);
             this.panel1.Controls.Add(this.btnExcluir);
             this.panel1.Controls.Add(this.btnSalvar);
@@ -86,8 +86,8 @@
             this.panel1.Controls.Add(this.btnLimpar);
             this.panel1.Controls.Add(this.rdoStatusInativo);
             this.panel1.Controls.Add(this.rdoStatusAtivo);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.txtEstoque);
+            this.panel1.Controls.Add(this.cmbCategoria);
             this.panel1.Controls.Add(this.txtPreco);
             this.panel1.Controls.Add(this.txtDescricao);
             this.panel1.Controls.Add(this.txtNome);
@@ -101,6 +101,22 @@
             this.panel1.Size = new System.Drawing.Size(776, 322);
             this.panel1.TabIndex = 2;
             // 
+            // txtUrlImagem
+            // 
+            this.txtUrlImagem.Location = new System.Drawing.Point(16, 235);
+            this.txtUrlImagem.Name = "txtUrlImagem";
+            this.txtUrlImagem.Size = new System.Drawing.Size(371, 20);
+            this.txtUrlImagem.TabIndex = 16;
+            // 
+            // lblUrlImagem
+            // 
+            this.lblUrlImagem.AutoSize = true;
+            this.lblUrlImagem.Location = new System.Drawing.Point(13, 219);
+            this.lblUrlImagem.Name = "lblUrlImagem";
+            this.lblUrlImagem.Size = new System.Drawing.Size(84, 13);
+            this.lblUrlImagem.TabIndex = 15;
+            this.lblUrlImagem.Text = "URL da Imagem";
+            // 
             // btnExcluir
             // 
             this.btnExcluir.Location = new System.Drawing.Point(271, 284);
@@ -109,6 +125,7 @@
             this.btnExcluir.TabIndex = 14;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnSalvar
             // 
@@ -128,6 +145,16 @@
             this.lblStatus.Size = new System.Drawing.Size(40, 13);
             this.lblStatus.TabIndex = 12;
             this.lblStatus.Text = "Status:";
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Location = new System.Drawing.Point(138, 284);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(116, 23);
+            this.btnLimpar.TabIndex = 13;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // rdoStatusInativo
             // 
@@ -151,20 +178,20 @@
             this.rdoStatusAtivo.Text = "Status";
             this.rdoStatusAtivo.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtEstoque
             // 
-            this.textBox1.Location = new System.Drawing.Point(476, 135);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(285, 20);
-            this.textBox1.TabIndex = 9;
+            this.txtEstoque.Location = new System.Drawing.Point(476, 135);
+            this.txtEstoque.Name = "txtEstoque";
+            this.txtEstoque.Size = new System.Drawing.Size(285, 20);
+            this.txtEstoque.TabIndex = 9;
             // 
-            // comboBox1
+            // cmbCategoria
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(476, 18);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(285, 21);
-            this.comboBox1.TabIndex = 8;
+            this.cmbCategoria.FormattingEnabled = true;
+            this.cmbCategoria.Location = new System.Drawing.Point(476, 18);
+            this.cmbCategoria.Name = "cmbCategoria";
+            this.cmbCategoria.Size = new System.Drawing.Size(285, 21);
+            this.cmbCategoria.TabIndex = 8;
             // 
             // txtPreco
             // 
@@ -233,15 +260,6 @@
             this.lblNome.TabIndex = 0;
             this.lblNome.Text = "Nome";
             // 
-            // btnLimpar
-            // 
-            this.btnLimpar.Location = new System.Drawing.Point(138, 284);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(116, 23);
-            this.btnLimpar.TabIndex = 13;
-            this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = true;
-            // 
             // lblCadastroGestao
             // 
             this.lblCadastroGestao.AutoSize = true;
@@ -252,13 +270,13 @@
             this.lblCadastroGestao.TabIndex = 3;
             this.lblCadastroGestao.Text = "Cadastro/Gestão de Produto";
             // 
-            // cmbFiltro
+            // cmbFiltroStatus
             // 
-            this.cmbFiltro.FormattingEnabled = true;
-            this.cmbFiltro.Location = new System.Drawing.Point(16, 428);
-            this.cmbFiltro.Name = "cmbFiltro";
-            this.cmbFiltro.Size = new System.Drawing.Size(130, 21);
-            this.cmbFiltro.TabIndex = 4;
+            this.cmbFiltroStatus.FormattingEnabled = true;
+            this.cmbFiltroStatus.Location = new System.Drawing.Point(16, 428);
+            this.cmbFiltroStatus.Name = "cmbFiltroStatus";
+            this.cmbFiltroStatus.Size = new System.Drawing.Size(130, 21);
+            this.cmbFiltroStatus.TabIndex = 4;
             // 
             // lblFiltroStatus
             // 
@@ -270,13 +288,13 @@
             this.lblFiltroStatus.TabIndex = 5;
             this.lblFiltroStatus.Text = "Status";
             // 
-            // comboBox2
+            // cmbFiltroCategoria
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(169, 428);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(130, 21);
-            this.comboBox2.TabIndex = 6;
+            this.cmbFiltroCategoria.FormattingEnabled = true;
+            this.cmbFiltroCategoria.Location = new System.Drawing.Point(169, 428);
+            this.cmbFiltroCategoria.Name = "cmbFiltroCategoria";
+            this.cmbFiltroCategoria.Size = new System.Drawing.Size(130, 21);
+            this.cmbFiltroCategoria.TabIndex = 6;
             // 
             // lblFiltroCategoria
             // 
@@ -287,22 +305,6 @@
             this.lblFiltroCategoria.TabIndex = 7;
             this.lblFiltroCategoria.Text = "Categoria";
             // 
-            // lblUrlImagem
-            // 
-            this.lblUrlImagem.AutoSize = true;
-            this.lblUrlImagem.Location = new System.Drawing.Point(13, 219);
-            this.lblUrlImagem.Name = "lblUrlImagem";
-            this.lblUrlImagem.Size = new System.Drawing.Size(84, 13);
-            this.lblUrlImagem.TabIndex = 15;
-            this.lblUrlImagem.Text = "URL da Imagem";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(16, 235);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(371, 20);
-            this.textBox2.TabIndex = 16;
-            // 
             // FrmProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -310,9 +312,9 @@
             this.BackColor = System.Drawing.Color.MintCream;
             this.ClientSize = new System.Drawing.Size(800, 649);
             this.Controls.Add(this.lblFiltroCategoria);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.cmbFiltroCategoria);
             this.Controls.Add(this.lblFiltroStatus);
-            this.Controls.Add(this.cmbFiltro);
+            this.Controls.Add(this.cmbFiltroStatus);
             this.Controls.Add(this.lblCadastroGestao);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
@@ -341,19 +343,19 @@
         private System.Windows.Forms.Label lblCategoria;
         private System.Windows.Forms.Label lblPreco;
         private System.Windows.Forms.TextBox txtPreco;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtEstoque;
+        private System.Windows.Forms.ComboBox cmbCategoria;
         private System.Windows.Forms.RadioButton rdoStatusAtivo;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.RadioButton rdoStatusInativo;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnSalvar;
-        private System.Windows.Forms.ComboBox cmbFiltro;
+        private System.Windows.Forms.ComboBox cmbFiltroStatus;
         private System.Windows.Forms.Label lblFiltroStatus;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbFiltroCategoria;
         private System.Windows.Forms.Label lblFiltroCategoria;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtUrlImagem;
         private System.Windows.Forms.Label lblUrlImagem;
     }
 }

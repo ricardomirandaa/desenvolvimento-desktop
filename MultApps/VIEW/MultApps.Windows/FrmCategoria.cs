@@ -24,14 +24,14 @@ namespace MultApps.Windows
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             var categoria = new Categoria();
-            var categoriaRepository = new CategoriaRepository();            
             categoria.Nome = txtNome.Text;
             categoria.Status = (StatusEnum)cmbStatus.SelectedIndex;
-            var categoriarepository = new CategoriaRepository();
-            
-            if(string.IsNullOrEmpty(txtNome.Text))
+
+            var categoriaRepository = new CategoriaRepository();
+
+            if (string.IsNullOrEmpty(txtId.Text))
             {
-                var resultado = categoriarepository.CadastrarCategoria(categoria);
+                var resultado = categoriaRepository.CadastrarCategoria(categoria);
                 if (resultado)
                 {
                     MessageBox.Show("Categoria cadastrada com sucesso");
@@ -45,7 +45,7 @@ namespace MultApps.Windows
             else
             {
                 categoria.Id = int.Parse(txtId.Text);
-                var resultado = categoriarepository.AtualizarCategoria(categoria);
+                var resultado = categoriaRepository.AtualizarCategoria(categoria);
                 if (resultado)
                 {
                     MessageBox.Show("Categoria cadastrada com sucesso");
@@ -95,6 +95,7 @@ namespace MultApps.Windows
                 HeaderText = "Status",
             });
             dataGridView1.DataSource = listaDeCategorias;
+            
         }
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
